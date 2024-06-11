@@ -1,0 +1,1078 @@
+2024-05-22 11:24:40,724 - __main__ - INFO - Namespace(epochs=64, lr=2e-05)
+2024-05-22 11:24:43,444 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 11:24:43,446 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 11:24:57,236 - __main__ - INFO - Epoch [1/64], Step [3/30], lr: 0.00002000, Loss: 3.2113921642303467
+2024-05-22 11:25:08,844 - __main__ - INFO - Epoch [1/64], Step [6/30], lr: 0.00002000, Loss: 3.564548969268799
+2024-05-22 11:25:21,252 - __main__ - INFO - Epoch [1/64], Step [9/30], lr: 0.00002000, Loss: 2.1661402384440103
+2024-05-22 11:25:33,316 - __main__ - INFO - Epoch [1/64], Step [12/30], lr: 0.00002000, Loss: 1.3895765542984009
+2024-05-22 11:25:46,078 - __main__ - INFO - Epoch [1/64], Step [15/30], lr: 0.00002000, Loss: 2.6419927974541983
+2024-05-22 11:25:58,033 - __main__ - INFO - Epoch [1/64], Step [18/30], lr: 0.00002000, Loss: 2.2040204604466758
+2024-05-22 11:26:09,790 - __main__ - INFO - Epoch [1/64], Step [21/30], lr: 0.00002000, Loss: 0.5497896571954092
+2024-05-22 11:26:23,228 - __main__ - INFO - Epoch [1/64], Step [24/30], lr: 0.00002000, Loss: 2.4325777304669223
+2024-05-22 11:26:34,839 - __main__ - INFO - Epoch [1/64], Step [27/30], lr: 0.00002000, Loss: 2.981042472024759
+2024-05-22 11:26:45,640 - __main__ - INFO - Epoch [1/64], Step [30/30], lr: 0.00002000, Loss: 1.0889934956406553
+2024-05-22 11:26:58,117 - __main__ - INFO - Epoch [2/64], Step [3/30], lr: 0.00002000, Loss: 2.225233276685079
+2024-05-22 11:27:09,175 - __main__ - INFO - Epoch [2/64], Step [6/30], lr: 0.00002000, Loss: 4.664626598358154
+2024-05-22 11:27:22,195 - __main__ - INFO - Epoch [2/64], Step [9/30], lr: 0.00002000, Loss: 2.9801108837127686
+2024-05-22 11:27:33,873 - __main__ - INFO - Epoch [2/64], Step [12/30], lr: 0.00002000, Loss: 0.5539781522626678
+2024-05-22 11:27:45,680 - __main__ - INFO - Epoch [2/64], Step [15/30], lr: 0.00002000, Loss: 0.5417146813124418
+2024-05-22 11:27:57,631 - __main__ - INFO - Epoch [2/64], Step [18/30], lr: 0.00002000, Loss: 0.010934088689585527
+2024-05-22 11:28:10,079 - __main__ - INFO - Epoch [2/64], Step [21/30], lr: 0.00002000, Loss: 1.7851873151957989
+2024-05-22 11:33:53,023 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-05-22 11:33:55,846 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 11:33:55,849 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 11:34:09,659 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 3.4545700550079346
+2024-05-22 11:34:21,309 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 3.5502611001332602
+2024-05-22 11:34:32,981 - __main__ - INFO - Epoch [1/1], Step [9/30], lr: 0.00002000, Loss: 2.2247520685195923
+2024-05-22 11:34:44,537 - __main__ - INFO - Epoch [1/1], Step [12/30], lr: 0.00002000, Loss: 1.6450568040211995
+2024-05-22 11:40:43,909 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 11:40:46,785 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 11:40:46,787 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 11:41:01,352 - __main__ - INFO - Epoch [1/5], Step [3/30], lr: 0.00002000, Loss: 3.8443374633789062
+2024-05-22 11:41:13,644 - __main__ - INFO - Epoch [1/5], Step [6/30], lr: 0.00002000, Loss: 3.512122551600138
+2024-05-22 11:41:25,947 - __main__ - INFO - Epoch [1/5], Step [9/30], lr: 0.00002000, Loss: 2.5958664417266846
+2024-05-22 11:41:38,181 - __main__ - INFO - Epoch [1/5], Step [12/30], lr: 0.00002000, Loss: 1.700190583864848
+2024-05-22 11:41:51,273 - __main__ - INFO - Epoch [1/5], Step [15/30], lr: 0.00002000, Loss: 2.266701022783915
+2024-05-22 11:42:03,730 - __main__ - INFO - Epoch [1/5], Step [18/30], lr: 0.00002000, Loss: 2.0061204930146537
+2024-05-22 11:42:16,114 - __main__ - INFO - Epoch [1/5], Step [21/30], lr: 0.00002000, Loss: 0.5940767079591751
+2024-05-22 11:42:30,165 - __main__ - INFO - Epoch [1/5], Step [24/30], lr: 0.00002000, Loss: 2.5460833124816418
+2024-05-22 11:42:42,381 - __main__ - INFO - Epoch [1/5], Step [27/30], lr: 0.00002000, Loss: 2.8618316935996213
+2024-05-22 11:42:53,875 - __main__ - INFO - Epoch [1/5], Step [30/30], lr: 0.00002000, Loss: 0.893139605720838
+2024-05-22 11:43:07,094 - __main__ - INFO - Epoch [2/5], Step [3/30], lr: 0.00002000, Loss: 1.8533007701237996
+2024-05-22 11:43:18,657 - __main__ - INFO - Epoch [2/5], Step [6/30], lr: 0.00002000, Loss: 4.294360876083374
+2024-05-22 11:43:31,804 - __main__ - INFO - Epoch [2/5], Step [9/30], lr: 0.00002000, Loss: 3.129690329233805
+2024-05-22 11:43:44,076 - __main__ - INFO - Epoch [2/5], Step [12/30], lr: 0.00002000, Loss: 0.4795456047480305
+2024-05-22 11:43:56,547 - __main__ - INFO - Epoch [2/5], Step [15/30], lr: 0.00002000, Loss: 0.8193837633977333
+2024-05-22 11:44:08,795 - __main__ - INFO - Epoch [2/5], Step [18/30], lr: 0.00002000, Loss: 0.009685865913828215
+2024-05-22 11:44:21,310 - __main__ - INFO - Epoch [2/5], Step [21/30], lr: 0.00002000, Loss: 1.822973866481334
+2024-05-22 11:44:34,568 - __main__ - INFO - Epoch [2/5], Step [24/30], lr: 0.00002000, Loss: 0.9812330280741056
+2024-05-22 11:44:48,313 - __main__ - INFO - Epoch [2/5], Step [27/30], lr: 0.00002000, Loss: 2.036385964602232
+2024-05-22 11:45:01,068 - __main__ - INFO - Epoch [2/5], Step [30/30], lr: 0.00002000, Loss: 0.051248920460542045
+2024-05-22 11:45:13,376 - __main__ - INFO - Epoch [3/5], Step [3/30], lr: 0.00002000, Loss: 0.04292394655446211
+2024-05-22 11:45:25,789 - __main__ - INFO - Epoch [3/5], Step [6/30], lr: 0.00002000, Loss: 0.37814333747761947
+2024-05-22 11:45:37,983 - __main__ - INFO - Epoch [3/5], Step [9/30], lr: 0.00002000, Loss: 0.1260893354192376
+2024-05-22 11:45:50,854 - __main__ - INFO - Epoch [3/5], Step [12/30], lr: 0.00002000, Loss: 2.4091320127093545
+2024-05-22 11:46:02,242 - __main__ - INFO - Epoch [3/5], Step [15/30], lr: 0.00002000, Loss: 0.4119925699196756
+2024-05-22 11:46:15,612 - __main__ - INFO - Epoch [3/5], Step [18/30], lr: 0.00002000, Loss: 6.131381670633952
+2024-05-22 11:46:28,368 - __main__ - INFO - Epoch [3/5], Step [21/30], lr: 0.00002000, Loss: 0.07348512602038682
+2024-05-22 11:46:41,552 - __main__ - INFO - Epoch [3/5], Step [24/30], lr: 0.00002000, Loss: 0.30168849555775523
+2024-05-22 11:46:54,490 - __main__ - INFO - Epoch [3/5], Step [27/30], lr: 0.00002000, Loss: 0.3140723683560888
+2024-05-22 11:47:07,826 - __main__ - INFO - Epoch [3/5], Step [30/30], lr: 0.00002000, Loss: 1.647575767710805
+2024-05-22 11:47:20,111 - __main__ - INFO - Epoch [4/5], Step [3/30], lr: 0.00002000, Loss: 0.20089375910659632
+2024-05-22 11:47:32,502 - __main__ - INFO - Epoch [4/5], Step [6/30], lr: 0.00002000, Loss: 3.1670636037985482
+2024-05-22 11:47:44,861 - __main__ - INFO - Epoch [4/5], Step [9/30], lr: 0.00002000, Loss: 0.04783302731812
+2024-05-22 11:47:58,258 - __main__ - INFO - Epoch [4/5], Step [12/30], lr: 0.00002000, Loss: 1.5463785752654076
+2024-05-22 11:48:10,807 - __main__ - INFO - Epoch [4/5], Step [15/30], lr: 0.00002000, Loss: 0.03290365170687437
+2024-05-22 11:48:23,519 - __main__ - INFO - Epoch [4/5], Step [18/30], lr: 0.00002000, Loss: 1.609933947212994
+2024-05-22 11:48:36,758 - __main__ - INFO - Epoch [4/5], Step [21/30], lr: 0.00002000, Loss: 1.7262319087361295
+2024-05-22 11:48:49,275 - __main__ - INFO - Epoch [4/5], Step [24/30], lr: 0.00002000, Loss: 0.012461236988504728
+2024-05-22 11:49:02,137 - __main__ - INFO - Epoch [4/5], Step [27/30], lr: 0.00002000, Loss: 0.0968195393991967
+2024-05-22 11:49:14,742 - __main__ - INFO - Epoch [4/5], Step [30/30], lr: 0.00002000, Loss: 0.02390064314628641
+2024-05-22 11:55:11,481 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 11:55:14,350 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 11:55:14,354 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 11:55:51,758 - __main__ - INFO - Epoch [1/5], Step [3/30], lr: 0.00002000, Loss: 3.142545461654663
+2024-05-22 11:56:27,397 - __main__ - INFO - Epoch [1/5], Step [6/30], lr: 0.00002000, Loss: 3.454530715942383
+2024-05-22 11:57:02,659 - __main__ - INFO - Epoch [1/5], Step [9/30], lr: 0.00002000, Loss: 2.229597330093384
+2024-05-22 11:57:37,634 - __main__ - INFO - Epoch [1/5], Step [12/30], lr: 0.00002000, Loss: 1.4559445182482402
+2024-05-22 11:58:13,657 - __main__ - INFO - Epoch [1/5], Step [15/30], lr: 0.00002000, Loss: 2.62840743859609
+2024-05-22 11:58:49,074 - __main__ - INFO - Epoch [1/5], Step [18/30], lr: 0.00002000, Loss: 1.830214520295461
+2024-05-22 11:59:24,545 - __main__ - INFO - Epoch [1/5], Step [21/30], lr: 0.00002000, Loss: 0.3916427989800771
+2024-05-22 12:00:01,651 - __main__ - INFO - Epoch [1/5], Step [24/30], lr: 0.00002000, Loss: 1.9602162167429924
+2024-05-22 12:00:36,833 - __main__ - INFO - Epoch [1/5], Step [27/30], lr: 0.00002000, Loss: 1.4315959364175797
+2024-05-22 12:01:11,282 - __main__ - INFO - Epoch [1/5], Step [30/30], lr: 0.00002000, Loss: 0.46602287453909713
+2024-05-22 12:01:47,468 - __main__ - INFO - Epoch [2/5], Step [3/30], lr: 0.00002000, Loss: 1.8369905551274617
+2024-05-22 12:02:22,052 - __main__ - INFO - Epoch [2/5], Step [6/30], lr: 0.00002000, Loss: 3.4391483440995216
+2024-05-22 12:02:58,138 - __main__ - INFO - Epoch [2/5], Step [9/30], lr: 0.00002000, Loss: 3.277533675233523
+2024-05-22 12:03:33,578 - __main__ - INFO - Epoch [2/5], Step [12/30], lr: 0.00002000, Loss: 0.3796015189339717
+2024-05-22 12:04:09,083 - __main__ - INFO - Epoch [2/5], Step [15/30], lr: 0.00002000, Loss: 0.5703289117664099
+2024-05-22 12:04:44,141 - __main__ - INFO - Epoch [2/5], Step [18/30], lr: 0.00002000, Loss: 0.009995358996093273
+2024-05-22 12:05:19,600 - __main__ - INFO - Epoch [2/5], Step [21/30], lr: 0.00002000, Loss: 1.89533437974751
+2024-05-22 12:05:55,647 - __main__ - INFO - Epoch [2/5], Step [24/30], lr: 0.00002000, Loss: 2.5580852458563945
+2024-05-22 12:06:31,873 - __main__ - INFO - Epoch [2/5], Step [27/30], lr: 0.00002000, Loss: 1.8819704751173656
+2024-05-22 12:07:07,541 - __main__ - INFO - Epoch [2/5], Step [30/30], lr: 0.00002000, Loss: 0.08851098533098896
+2024-05-22 12:07:42,540 - __main__ - INFO - Epoch [3/5], Step [3/30], lr: 0.00002000, Loss: 0.006685028628756602
+2024-05-22 12:08:15,784 - __main__ - INFO - Epoch [3/5], Step [6/30], lr: 0.00002000, Loss: 0.14280418073758483
+2024-05-22 12:08:48,778 - __main__ - INFO - Epoch [3/5], Step [9/30], lr: 0.00002000, Loss: 1.9826607122085989
+2024-05-22 12:09:22,521 - __main__ - INFO - Epoch [3/5], Step [12/30], lr: 0.00002000, Loss: 3.655872862941275
+2024-05-22 12:09:54,677 - __main__ - INFO - Epoch [3/5], Step [15/30], lr: 0.00002000, Loss: 0.011813388826946417
+2024-05-22 12:10:28,991 - __main__ - INFO - Epoch [3/5], Step [18/30], lr: 0.00002000, Loss: 5.013280073801677
+2024-05-22 12:11:02,468 - __main__ - INFO - Epoch [3/5], Step [21/30], lr: 0.00002000, Loss: 0.15028947374473015
+2024-05-22 12:11:36,429 - __main__ - INFO - Epoch [3/5], Step [24/30], lr: 0.00002000, Loss: 0.23766410474975905
+2024-05-22 12:12:10,126 - __main__ - INFO - Epoch [3/5], Step [27/30], lr: 0.00002000, Loss: 0.33369049554069835
+2024-05-22 12:12:44,181 - __main__ - INFO - Epoch [3/5], Step [30/30], lr: 0.00002000, Loss: 1.6897689048200846
+2024-05-22 12:13:17,164 - __main__ - INFO - Epoch [4/5], Step [3/30], lr: 0.00002000, Loss: 0.0735331562658151
+2024-05-22 12:51:52,110 - __main__ - INFO - Epoch [4/5], Step [6/30], lr: 0.00002000, Loss: 3.328175528285404
+2024-05-22 12:52:27,004 - __main__ - INFO - Epoch [4/5], Step [9/30], lr: 0.00002000, Loss: 1.6293705990538
+2024-05-22 12:53:02,751 - __main__ - INFO - Epoch [4/5], Step [12/30], lr: 0.00002000, Loss: 1.657620698524018
+2024-05-22 12:53:37,935 - __main__ - INFO - Epoch [4/5], Step [15/30], lr: 0.00002000, Loss: 0.022027719145019848
+2024-05-22 12:54:13,327 - __main__ - INFO - Epoch [4/5], Step [18/30], lr: 0.00002000, Loss: 1.5945117895801861
+2024-05-22 12:54:49,438 - __main__ - INFO - Epoch [4/5], Step [21/30], lr: 0.00002000, Loss: 1.5311062643304467
+2024-05-22 12:55:24,842 - __main__ - INFO - Epoch [4/5], Step [24/30], lr: 0.00002000, Loss: 0.02710150896261136
+2024-05-22 12:56:00,588 - __main__ - INFO - Epoch [4/5], Step [27/30], lr: 0.00002000, Loss: 0.07460651344930132
+2024-05-22 12:56:36,474 - __main__ - INFO - Epoch [4/5], Step [30/30], lr: 0.00002000, Loss: 1.691592267404
+2024-05-22 12:58:11,712 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 12:58:14,582 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 12:58:14,584 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 13:00:21,054 - __main__ - INFO - Epoch [1/5], Step [3/30], lr: 0.00002000, Loss: 4.178701480229695
+2024-05-22 13:02:25,709 - __main__ - INFO - Epoch [1/5], Step [6/30], lr: 0.00002000, Loss: 3.2752296129862466
+2024-05-22 13:04:30,942 - __main__ - INFO - Epoch [1/5], Step [9/30], lr: 0.00002000, Loss: 2.208291212717692
+2024-05-22 15:13:58,614 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 15:14:01,929 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 15:14:01,934 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 15:15:59,946 - __main__ - INFO - Epoch [1/5], Step [3/30], lr: 0.00002000, Loss: 3.0567890803019204
+2024-05-22 15:17:57,943 - __main__ - INFO - Epoch [1/5], Step [6/30], lr: 0.00002000, Loss: 2.5824689865112305
+2024-05-22 15:19:55,119 - __main__ - INFO - Epoch [1/5], Step [9/30], lr: 0.00002000, Loss: 1.7427022059758503
+2024-05-22 15:21:54,151 - __main__ - INFO - Epoch [1/5], Step [12/30], lr: 0.00002000, Loss: 1.980516533056895
+2024-05-22 15:23:57,435 - __main__ - INFO - Epoch [1/5], Step [15/30], lr: 0.00002000, Loss: 2.1016664703687034
+2024-05-22 15:26:07,581 - __main__ - INFO - Epoch [1/5], Step [18/30], lr: 0.00002000, Loss: 1.8079135020573933
+2024-05-22 15:28:03,853 - __main__ - INFO - Epoch [1/5], Step [21/30], lr: 0.00002000, Loss: 0.11681778977314632
+2024-05-22 15:30:05,610 - __main__ - INFO - Epoch [1/5], Step [24/30], lr: 0.00002000, Loss: 2.4625179693102837
+2024-05-22 15:32:02,222 - __main__ - INFO - Epoch [1/5], Step [27/30], lr: 0.00002000, Loss: 1.9518993745247524
+2024-05-22 15:33:58,097 - __main__ - INFO - Epoch [1/5], Step [30/30], lr: 0.00002000, Loss: 0.675161376905938
+2024-05-22 15:35:55,633 - __main__ - INFO - Epoch [2/5], Step [3/30], lr: 0.00002000, Loss: 1.6143214448044698
+2024-05-22 15:37:54,452 - __main__ - INFO - Epoch [2/5], Step [6/30], lr: 0.00002000, Loss: 3.7538472930900753
+2024-05-22 16:17:09,093 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 16:17:12,314 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 16:17:12,316 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 22:37:16,523 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 22:37:20,395 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 22:37:20,399 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 22:44:15,097 - __main__ - INFO - Namespace(epochs=5, lr=2e-05)
+2024-05-22 22:44:19,526 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 22:44:19,530 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 22:46:16,670 - __main__ - INFO - Epoch [1/5], Step [3/30], lr: 0.00002000, Loss: 3.240406115849813
+2024-05-22 22:48:11,523 - __main__ - INFO - Epoch [1/5], Step [6/30], lr: 0.00002000, Loss: 2.9339269002278647
+2024-05-22 22:50:05,942 - __main__ - INFO - Epoch [1/5], Step [9/30], lr: 0.00002000, Loss: 1.8548855781555176
+2024-05-22 22:50:14,757 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-05-22 22:50:17,775 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-22 22:50:17,778 - __main__ - INFO - Total Parameters: 12856355
+2024-05-22 22:52:22,431 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 3.645235459009806
+2024-05-22 22:54:25,482 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 3.0143137772878013
+2024-05-22 22:56:28,724 - __main__ - INFO - Epoch [1/1], Step [9/30], lr: 0.00002000, Loss: 1.9332810242970784
+2024-05-22 22:58:27,319 - __main__ - INFO - Epoch [1/1], Step [12/30], lr: 0.00002000, Loss: 2.295355757077535
+2024-05-23 13:57:59,668 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-05-23 13:58:04,845 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-23 13:58:04,847 - __main__ - INFO - Total Parameters: 12856355
+2024-05-23 14:00:02,129 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 3.982111612955729
+2024-05-23 14:01:57,182 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 3.2179272174835205
+2024-05-23 14:03:52,762 - __main__ - INFO - Epoch [1/1], Step [9/30], lr: 0.00002000, Loss: 2.2345762252807617
+2024-05-23 14:05:48,257 - __main__ - INFO - Epoch [1/1], Step [12/30], lr: 0.00002000, Loss: 2.5170308351516724
+2024-05-23 14:07:44,754 - __main__ - INFO - Epoch [1/1], Step [15/30], lr: 0.00002000, Loss: 2.13790762424469
+2024-05-23 14:09:39,146 - __main__ - INFO - Epoch [1/1], Step [18/30], lr: 0.00002000, Loss: 2.1737022598584494
+2024-05-23 14:11:34,563 - __main__ - INFO - Epoch [1/1], Step [21/30], lr: 0.00002000, Loss: 0.1831518958012263
+2024-05-23 14:13:31,824 - __main__ - INFO - Epoch [1/1], Step [24/30], lr: 0.00002000, Loss: 2.3585340480009713
+2024-05-23 14:15:26,538 - __main__ - INFO - Epoch [1/1], Step [27/30], lr: 0.00002000, Loss: 1.9634349991877873
+2024-05-23 14:17:21,279 - __main__ - INFO - Epoch [1/1], Step [30/30], lr: 0.00002000, Loss: 0.7391129471361637
+2024-05-23 14:19:35,062 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-05-23 14:19:37,911 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-23 14:19:37,914 - __main__ - INFO - Total Parameters: 12856355
+2024-05-23 14:21:37,719 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 3.3934028148651123
+2024-05-23 14:23:33,985 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 3.323000987370809
+2024-05-23 14:32:53,099 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-05-23 14:32:56,460 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_proj): Linear(in_features=512, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_proj): Linear(in_features=1024, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-05-23 14:32:56,462 - __main__ - INFO - Total Parameters: 12856355
+2024-05-23 14:34:52,948 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 3.3629151980082193
+2024-05-23 14:36:46,877 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 3.152799447377523
+2024-05-23 14:38:41,299 - __main__ - INFO - Epoch [1/1], Step [9/30], lr: 0.00002000, Loss: 1.9757800499598186
+2024-05-23 14:40:35,089 - __main__ - INFO - Epoch [1/1], Step [12/30], lr: 0.00002000, Loss: 2.0131860772768655
+2024-05-23 14:42:30,199 - __main__ - INFO - Epoch [1/1], Step [15/30], lr: 0.00002000, Loss: 2.1232539216677346
+2024-05-23 14:44:23,965 - __main__ - INFO - Epoch [1/1], Step [18/30], lr: 0.00002000, Loss: 1.9836162527402241
+2024-05-23 14:46:18,158 - __main__ - INFO - Epoch [1/1], Step [21/30], lr: 0.00002000, Loss: 0.11696525911490123
+2024-05-23 14:48:13,707 - __main__ - INFO - Epoch [1/1], Step [24/30], lr: 0.00002000, Loss: 2.5391103141009808
+2024-05-23 14:50:07,679 - __main__ - INFO - Epoch [1/1], Step [27/30], lr: 0.00002000, Loss: 1.9370320563515027
+2024-05-23 14:52:00,845 - __main__ - INFO - Epoch [1/1], Step [30/30], lr: 0.00002000, Loss: 0.4583683755869667
+2024-06-06 13:14:27,675 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-06-06 13:14:33,128 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-06-06 13:14:33,132 - __main__ - INFO - Total Parameters: 64237602
+2024-06-06 13:15:06,532 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-06-06 13:15:09,613 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-06-06 13:15:09,617 - __main__ - INFO - Total Parameters: 64237602
+2024-06-06 13:15:30,530 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-06-06 13:15:33,672 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-06-06 13:15:33,675 - __main__ - INFO - Total Parameters: 64237602
+2024-06-06 13:17:33,915 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: nan
+2024-06-06 13:18:20,813 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-06-06 13:18:23,940 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-06-06 13:18:23,944 - __main__ - INFO - Total Parameters: 64237602
+2024-06-06 13:18:55,927 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: nan
+2024-06-06 13:19:26,395 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: nan
+2024-06-06 13:20:03,208 - __main__ - INFO - Namespace(epochs=1, lr=2e-05)
+2024-06-06 13:20:06,345 - __main__ - INFO - BMEModelForSequenceClassification(
+  (bme): BMEModel(
+    (embeddings): Embedding(
+      (eeg_embedding): Embedding(4098, 512, padding_idx=0)
+      (ecg_embedding): Embedding(4098, 512, padding_idx=0)
+    )
+    (pre_mixer_layernorm): BMERMSNorm()
+    (multi_modal_mixer): Multimodal_MambaMixer(
+      (eeg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+      (ecg_mamba): MambaMixer(
+        (conv1d): LognConv1d(1024, 1024, kernel_size=(4,), stride=(1,), padding=(3,), groups=1024)
+        (act): SiLU()
+        (in_up_proj): Linear(in_features=512, out_features=8192, bias=False)
+        (in_down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+        (x_proj): Linear(in_features=1024, out_features=64, bias=False)
+        (dt_proj): Linear(in_features=32, out_features=1024, bias=True)
+        (out_up_proj): Linear(in_features=1024, out_features=4096, bias=False)
+        (out_down_proj): Linear(in_features=4096, out_features=512, bias=False)
+      )
+    )
+    (pre_attention_layernorm): BMERMSNorm()
+    (attention): MultiModalMultiHeadAggregatedAttention(
+      (eeg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_K): Linear(in_features=512, out_features=512, bias=True)
+      (eeg_V): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_Q): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_K): Linear(in_features=512, out_features=512, bias=True)
+      (ecg_V): Linear(in_features=512, out_features=512, bias=True)
+      (W_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (pre_mlp_layernorm): BMERMSNorm()
+    (mlp): MLP(
+      (gate_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (gate_act): Sigmoid()
+      (up_linear): Linear(in_features=512, out_features=2048, bias=True)
+      (up_act): SiLU()
+      (down_linear): Linear(in_features=2048, out_features=512, bias=True)
+    )
+    (hidden_dropout): Dropout(p=0.1, inplace=False)
+    (final_layer_norm): BMERMSNorm()
+  )
+  (classifier): Linear(in_features=512, out_features=32, bias=True)
+)
+2024-06-06 13:20:06,348 - __main__ - INFO - Total Parameters: 64236578
+2024-06-06 13:20:37,913 - __main__ - INFO - Epoch [1/1], Step [3/30], lr: 0.00002000, Loss: 4.1688493092854815
+2024-06-06 13:21:08,035 - __main__ - INFO - Epoch [1/1], Step [6/30], lr: 0.00002000, Loss: 2.7294551531473794
+2024-06-06 13:21:38,114 - __main__ - INFO - Epoch [1/1], Step [9/30], lr: 0.00002000, Loss: 1.7407612403233845
+2024-06-06 13:22:08,246 - __main__ - INFO - Epoch [1/1], Step [12/30], lr: 0.00002000, Loss: 1.080865701039632
+2024-06-06 13:22:38,628 - __main__ - INFO - Epoch [1/1], Step [15/30], lr: 0.00002000, Loss: 0.12008423606554668
+2024-06-06 13:23:08,823 - __main__ - INFO - Epoch [1/1], Step [18/30], lr: 0.00002000, Loss: 1.9465989948560793
+2024-06-06 13:23:38,937 - __main__ - INFO - Epoch [1/1], Step [21/30], lr: 0.00002000, Loss: 0.004387151449918747
+2024-06-06 13:24:09,578 - __main__ - INFO - Epoch [1/1], Step [24/30], lr: 0.00002000, Loss: 4.883334244911869
+2024-06-06 13:24:39,827 - __main__ - INFO - Epoch [1/1], Step [27/30], lr: 0.00002000, Loss: 2.1302677625014135
+2024-06-06 13:25:09,782 - __main__ - INFO - Epoch [1/1], Step [30/30], lr: 0.00002000, Loss: 0.006039313351114591
